@@ -20,6 +20,8 @@ namespace VotingApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ReturnEventHandler<string> GetStringPageFunction_Returned { get; private set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -27,7 +29,9 @@ namespace VotingApp
 
         private void AddVoters(object sender, RoutedEventArgs e)
         {
-
+            GetStringPageFunction pageFunction = new GetStringPageFunction();
+            pageFunction.Return += new ReturnEventHandler<String>(GetStringPageFunction_Returned);
+            this.NavigationService.Navigate(pageFunction);
         }
 
         private void SubmitClick_Click(object sender, RoutedEventArgs e)
