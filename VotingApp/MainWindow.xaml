@@ -10,7 +10,8 @@
         <ResourceDictionary>
             <Style TargetType="Button">
                 <Setter Property="Cursor" Value="Hand"/>
-                <Setter Property="Background" Value="#006400"/>
+                <Setter Property="Background" Value="#1E90FF"/>
+                <Setter Property="BorderBrush" Value="Black"/>
             </Style>
         </ResourceDictionary>
     </Window.Resources>
@@ -31,7 +32,7 @@
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <TextBlock Text="Voters" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <Button  x:Name="Button"  Click="AddVoters"  Content="+" Background="#006400" Width="25px" HorizontalAlignment="Right"/>
+                    <Button  x:Name="Button"  Click="AddVoters_Button"  Content="+"  Width="25px" HorizontalAlignment="Right"/>
                 </Grid>
                 <Grid Grid.Row="1">
                     <DataGrid>
@@ -79,9 +80,9 @@
             </Grid>
             <Grid Grid.Row="1">
                 <StackPanel Margin="10px" Orientation="Horizontal" VerticalAlignment="Top">
-                    <ComboBox Name="PickVoter" Width="100px" Height="25px" Margin="0,0,10,0" />
-                    <ComboBox Name="PickCandidate" Margin="10,0,10,0" Width="100px" Height="25px"  />
-                    <Button  Content="Submit"  Padding="10,0,10,0" x:Name="SubmitClick" Click="SubmitClick_Click"/>
+                    <ComboBox Name="PickVoter_Combobox" Width="100px" Height="25px" Margin="0,0,10,0" />
+                    <ComboBox Name="PickCandidate_Combobox" Margin="10,0,10,0" Width="100px" Height="25px"  />
+                    <Button   Content="Submit"  Padding="10,0,10,0" x:Name="SubmitClick" Click="SubmitClick_Click"/>
                 </StackPanel>
             </Grid>
         </Grid>

@@ -34,5 +34,10 @@ namespace VotingApp
         {
 
         }
+
+        private void AddVoters_Button(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
