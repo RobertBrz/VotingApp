@@ -1,0 +1,15 @@
+﻿<Window x:Class="VotingApp.AddPersonWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VotingApp"
+        mc:Ignorable="d"
+        Title="Window1" ResizeMode="NoResize" Height="300" Width="500">
+    <Grid>
+        <Grid Background="White" >
+            <TextBox x:Name="NameTextBox" Background="LightGray" Width="200px" Height="30px" TextChanged="RemoveNoAlphabetSigns" ></TextBox>
+            <Button Content="Add" Background="#4CBB17" Click="Add" Width="100px" Height="30px" Margin="200,127,200,27"/>
+        </Grid>
+    </Grid>
+</Window>

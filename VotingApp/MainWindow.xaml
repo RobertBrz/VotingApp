@@ -35,14 +35,10 @@
                     <Button  x:Name="Button"  Click="AddVoters_Button"  Content="+"  Width="25px" HorizontalAlignment="Right"/>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <DataGrid>
+                    <DataGrid x:Name="VotersGrid" ItemsSource="{Binding }" AutoGenerateColumns="False">
                         <DataGrid.Columns >
-                            <DataGridTextColumn Width="5*">
-                                <DataGridTextColumn.Header>Name</DataGridTextColumn.Header>
-                            </DataGridTextColumn>
-                            <DataGridTextColumn Width="1*">
-                                <DataGridTextColumn.Header>Has Voted</DataGridTextColumn.Header>
-                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="5*" Header="Name" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Width="1*" Header="Has Voted" Binding="{Binding HasVoted}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -54,17 +50,13 @@
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <TextBlock Text="Candidates" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <Button Click="AddVoters" Content="+"  Width="25px" HorizontalAlignment="Right"/>
+                    <Button Click="AddCandidate" Content="+"  Width="25px" HorizontalAlignment="Right"/>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <DataGrid  >
+                    <DataGrid x:Name="CandidatesGrid"  ItemsSource="{Binding }" AutoGenerateColumns="False"> 
                         <DataGrid.Columns >
-                            <DataGridTextColumn Width="5*">
-                                <DataGridTextColumn.Header >Name</DataGridTextColumn.Header>
-                            </DataGridTextColumn>
-                            <DataGridTextColumn Width="1*">
-                                <DataGridTextColumn.Header >Votes</DataGridTextColumn.Header>
-                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="5*" Header="Name"  Binding="{Binding Name}"/>
+                            <DataGridTextColumn Width="1*" Header="Votes" Binding="{Binding Votes}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

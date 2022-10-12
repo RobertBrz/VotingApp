@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VotingApp.NewFolder;
 
 namespace VotingApp
 {
@@ -20,26 +22,38 @@ namespace VotingApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ReturnEventHandler<string> GetStringPageFunction_Returned { get; private set; }
+        public ObservableCollection<Candidate> CandidatesCollection { get; set; } = new ObservableCollection<Candidate>();
+        public ObservableCollection<Voter> VotersCollection { get; set; } = new ObservableCollection<Voter>();
+
 
         public MainWindow()
         {
             InitializeComponent();
+            this.CandidatesGrid.ItemsSource = CandidatesCollection;
+            this.VotersGrid.ItemsSource = VotersCollection;
         }
 
-        private void AddVoters(object sender, RoutedEventArgs e)
+        private void AddCandidate(object sender, RoutedEventArgs e)
         {
-            GetStringPageFunction pageFunction = new GetStringPageFunction();
-            pageFunction.Return += new ReturnEventHandler<String>(GetStringPageFunction_Returned);
-            this.NavigationService.Navigate(pageFunction);
-        }
+            AddPersonWindow addPersonPage = new AddPersonWindow(new Candidate());
+            addPersonPage.ShowDialog();
+            var person = addPersonPage.Person;
+            if (string.IsNullOrEmpty(person.Name)) return;
 
-        private void SubmitClick_Click(object sender, RoutedEventArgs e)
-        {
-
+            CandidatesCollection.Add((Candidate)person);
         }
 
         private void AddVoters_Button(object sender, RoutedEventArgs e)
+        {
+            AddPersonWindow addPersonPage = new AddPersonWindow(new Voter());
+            addPersonPage.ShowDialog();
+            var person = addPersonPage.Person;
+            if (string.IsNullOrEmpty(person.Name)) return;
+
+            VotersCollection.Add((Voter)person);
+        }
+
+        private void SubmitClick_Click(object sender, RoutedEventArgs e)
         {
 
         }
