@@ -35,7 +35,7 @@
                     <Button  x:Name="Button"  Click="AddVoters_Button"  Content="+"  Width="25px" HorizontalAlignment="Right"/>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <DataGrid x:Name="VotersGrid" ItemsSource="{Binding }" AutoGenerateColumns="False">
+                    <DataGrid x:Name="VotersGrid" IsEnabled="False" ItemsSource="{Binding }" AutoGenerateColumns="False">
                         <DataGrid.Columns >
                             <DataGridTextColumn Width="5*" Header="Name" Binding="{Binding Name}"/>
                             <DataGridTextColumn Width="1*" Header="Has Voted" Binding="{Binding HasVoted}"/>
@@ -53,7 +53,7 @@
                     <Button Click="AddCandidate" Content="+"  Width="25px" HorizontalAlignment="Right"/>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <DataGrid x:Name="CandidatesGrid"  ItemsSource="{Binding }" AutoGenerateColumns="False"> 
+                    <DataGrid x:Name="CandidatesGrid"  IsEnabled="False" ItemsSource="{Binding }" AutoGenerateColumns="False"> 
                         <DataGrid.Columns >
                             <DataGridTextColumn Width="5*" Header="Name"  Binding="{Binding Name}"/>
                             <DataGridTextColumn Width="1*" Header="Votes" Binding="{Binding Votes}"/>
@@ -72,8 +72,22 @@
             </Grid>
             <Grid Grid.Row="1">
                 <StackPanel Margin="10px" Orientation="Horizontal" VerticalAlignment="Top">
-                    <ComboBox Name="PickVoter_Combobox" Width="100px" Height="25px" Margin="0,0,10,0" />
-                    <ComboBox Name="PickCandidate_Combobox" Margin="10,0,10,0" Width="100px" Height="25px"  />
+                    <ComboBox Name="PickVoter_Combobox" 
+                              Width="100px" Height="25px" 
+                              Margin="0,0,10,0" 
+                              IsEditable="true"
+                              IsReadOnly="True"
+                              ItemsSource="{Binding VotersCollection}"
+                              Text="I am"
+                              >
+                    </ComboBox>
+                    <ComboBox Name="PickCandidate_Combobox"
+                              Margin="10,0,10,0" Width="100px"
+                              Height="25px" 
+                              IsEditable="True"
+                              IsReadOnly="True"
+                              Text="I vote for"
+                              ItemsSource="{Binding CandidatesCollection}"/>
                     <Button   Content="Submit"  Padding="10,0,10,0" x:Name="SubmitClick" Click="SubmitClick_Click"/>
                 </StackPanel>
             </Grid>

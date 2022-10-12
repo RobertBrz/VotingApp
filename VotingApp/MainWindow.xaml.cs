@@ -31,6 +31,8 @@ namespace VotingApp
             InitializeComponent();
             this.CandidatesGrid.ItemsSource = CandidatesCollection;
             this.VotersGrid.ItemsSource = VotersCollection;
+            this.PickVoter_Combobox.ItemsSource = VotersCollection;
+            this.PickCandidate_Combobox.ItemsSource = CandidatesCollection;
         }
 
         private void AddCandidate(object sender, RoutedEventArgs e)
