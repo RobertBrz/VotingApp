@@ -7,9 +7,9 @@ using System.Windows.Xps.Serialization;
 
 namespace VotingApp.NewFolder
 {
-    public class Voter : Person
+    public class Voter : Person 
     {
-        public bool HasVoted { get; set; } = false;
+        public bool HasVoted { get;private  set; } = false;
 
         public Voter() : base()
         {

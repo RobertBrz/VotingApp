@@ -5,11 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VotingApp"
         mc:Ignorable="d"
-        Title="Window1" ResizeMode="NoResize" Height="300" Width="500">
-    <Grid>
-        <Grid Background="White" >
-            <TextBox x:Name="NameTextBox" Background="LightGray" Width="200px" Height="30px" TextChanged="RemoveNoAlphabetSigns" ></TextBox>
-            <Button Content="Add" Background="#4CBB17" Click="Add" Width="100px" Height="30px" Margin="200,127,200,27"/>
+        Title="" ResizeMode="NoResize" Height="150" Width="500">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TextBox x:Name="NameTextBox" VerticalContentAlignment="Center"  Background="#E8E8E8" Width="200px" Height="30px" TextChanged="RemoveNoAlphabetSigns"   ></TextBox>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Button Content="Add" Background="#4CBB17" Click="Add" Width="100px" Height="30px"  />
         </Grid>
     </Grid>
 </Window>

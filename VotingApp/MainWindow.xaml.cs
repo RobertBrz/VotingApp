@@ -39,25 +39,33 @@ namespace VotingApp
         {
             AddPersonWindow addPersonPage = new AddPersonWindow(new Candidate());
             addPersonPage.ShowDialog();
-            var person = addPersonPage.Person;
-            if (string.IsNullOrEmpty(person.Name)) return;
-
-            CandidatesCollection.Add((Candidate)person);
+            var candidate = (Candidate)addPersonPage.Person;
+            if (!string.IsNullOrEmpty(candidate.Name) &&
+                !CandidatesCollection.Any(c => c.Name == candidate.Name)) CandidatesCollection.Add(candidate);
         }
 
         private void AddVoters_Button(object sender, RoutedEventArgs e)
         {
             AddPersonWindow addPersonPage = new AddPersonWindow(new Voter());
             addPersonPage.ShowDialog();
-            var person = addPersonPage.Person;
-            if (string.IsNullOrEmpty(person.Name)) return;
-
-            VotersCollection.Add((Voter)person);
+            var voter = (Voter)addPersonPage.Person;
+            if (!string.IsNullOrEmpty(voter.Name) &&
+                !VotersCollection.Any(v => v.Name == voter.Name)) VotersCollection.Add(voter);
         }
 
         private void SubmitClick_Click(object sender, RoutedEventArgs e)
         {
+            var selectedVoter = (Voter)PickVoter_Combobox.SelectedItem;
+            var selectedCandidate = (Candidate)PickCandidate_Combobox.SelectedItem;
 
+            if (selectedVoter.HasVoted || selectedVoter == null || selectedCandidate == null) return;
+
+            CandidatesCollection.Remove(selectedCandidate);
+            VotersCollection.Remove(selectedVoter);
+            selectedVoter.SetVoteState();
+            selectedCandidate.IncrementVotes();
+            VotersCollection.Add(selectedVoter);
+            CandidatesCollection.Add(selectedCandidate);
         }
     }
 }

@@ -38,7 +38,7 @@ namespace VotingApp
 
         private void RemoveNoAlphabetSigns(object sender, TextChangedEventArgs e)
         {
-            Regex rgx = new Regex("[^a-zA-Z0-9 -]");
+            Regex rgx = new Regex("[^a-zA-Z-]");
             NameTextBox.Text = rgx.Replace(NameTextBox.Text, "");
         }
     }

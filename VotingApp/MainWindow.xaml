@@ -35,10 +35,10 @@
                     <Button  x:Name="Button"  Click="AddVoters_Button"  Content="+"  Width="25px" HorizontalAlignment="Right"/>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <DataGrid x:Name="VotersGrid" IsEnabled="False" ItemsSource="{Binding }" AutoGenerateColumns="False">
+                    <DataGrid x:Name="VotersGrid" IsReadOnly="True" ItemsSource="{Binding }" AutoGenerateColumns="False">
                         <DataGrid.Columns >
                             <DataGridTextColumn Width="5*" Header="Name" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Width="1*" Header="Has Voted" Binding="{Binding HasVoted}"/>
+                            <DataGridTextColumn Width="2*" Header="Has Voted" Binding="{Binding HasVoted}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -53,10 +53,10 @@
                     <Button Click="AddCandidate" Content="+"  Width="25px" HorizontalAlignment="Right"/>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <DataGrid x:Name="CandidatesGrid"  IsEnabled="False" ItemsSource="{Binding }" AutoGenerateColumns="False"> 
+                    <DataGrid x:Name="CandidatesGrid" IsReadOnly="True" VerticalScrollBarVisibility="Auto"  ItemsSource="{Binding }" AutoGenerateColumns="False">
                         <DataGrid.Columns >
                             <DataGridTextColumn Width="5*" Header="Name"  Binding="{Binding Name}"/>
-                            <DataGridTextColumn Width="1*" Header="Votes" Binding="{Binding Votes}"/>
+                            <DataGridTextColumn Width="2*" Header="Votes" Binding="{Binding Votes}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
